@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-dark">
+    <div class="container">
+        <span class="navbar-brand">🏥 Care & Cure Hospital</span>
+        <span class="text-white">Appointment Management</span>
+    </div>
+</nav>
+
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">Hospital Dashboard</h2>
+
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="card dashboard-card">
+                <h5>Total Patients</h5>
+                <h2 id="patientCount">0</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card dashboard-card">
+                <h5>Total Doctors</h5>
+                <h2 id="doctorCount">0</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card dashboard-card">
+                <h5>Total Appointments</h5>
+                <h2 id="appointmentCount">0</h2>
+            </div>
+        </div>
+    </div>
+
+    <div id="message"></div>
+
+    <div class="row g-4">
+
+        <!-- Patient Registration -->
+        <div class="col-md-6">
+            <div class="card p-4">
+                <h4>Patient Registration</h4>
+
+                <form id="patientForm">
+                    <input class="form-control mb-3" id="pname"
+                           placeholder="Patient Name" required>
+
+                    <input class="form-control mb-3" id="age"
+                           type="number" min="1" placeholder="Age" required>
+
+                    <select class="form-select mb-3" id="gender" required>
+                        <option value="">Select Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+
+                    <input class="form-control mb-3" id="phone"
+                           placeholder="Phone Number" required>
+
+                    <input class="form-control mb-3" id="email"
+                           type="email" placeholder="Email" required>
+
+                    <button class="btn btn-primary w-100" type="submit">
+                        Register Patient
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Doctor Registration -->
+        <div class="col-md-6">
+            <div class="card p-4">
+                <h4>Doctor Registration</h4>
+
+                <form id="doctorForm">
+                    <input class="form-control mb-3" id="dname"
+                           placeholder="Doctor Name" required>
+
+                    <input class="form-control mb-3" id="specialization"
+                           placeholder="Specialization" required>
+
+                    <input class="form-control mb-3" id="dphone"
+                           placeholder="Phone Number" required>
+
+                    <input class="form-control mb-3" id="fee"
+                           type="number" min="0" placeholder="Consultation Fee" required>
+
+                    <button class="btn btn-success w-100" type="submit">
+                        Register Doctor
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Appointment Booking -->
+        <div class="col-md-6">
+            <div class="card p-4">
+                <h4>Book Appointment</h4>
+
+                <form id="appointmentForm">
+                    <label class="form-label">Select Patient</label>
+                    <select class="form-select mb-3" id="patientId" required>
+                        <option value="">Select Patient</option>
+                    </select>
+
+                    <label class="form-label">Select Doctor</label>
+                    <select class="form-select mb-3" id="doctorId" required>
+                        <option value="">Select Doctor</option>
+                    </select>
+
+                    <label class="form-label">Appointment Date & Time</label>
+                    <input class="form-control mb-3" id="appointmentDate"
+                           type="datetime-local" required>
+
+                    <button class="btn btn-primary w-100" type="submit">
+                        Book Appointment
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Patient Table -->
+    <div class="card p-4 mt-4">
+        <h4>Patient Details</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody id="patientTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Doctor Table -->
+    <div class="card p-4 mt-4">
+        <h4>Doctor Details</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Specialization</th>
+                        <th>Phone</th>
+                        <th>Fee</th>
+                    </tr>
+                </thead>
+                <tbody id="doctorTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Appointment Table -->
+    <div class="card p-4 mt-4 mb-5">
+        <h4>Appointment Details</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Patient</th>
+                        <th>Doctor</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="appointmentTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
